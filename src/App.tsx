@@ -1,7 +1,7 @@
 import React from 'react';
 import { TextField } from './lib';
 
-import './App.css';
+import './App.scss';
 
 function App() {
   return (

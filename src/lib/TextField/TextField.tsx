@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './TextField.css';
+import './TextField.scss';
 
 const TextField: React.FC = props => {
-  return <div>Text field!</div>;
+  return <div className='textfield'>Text field!</div>;
 }
 
 export default TextField;
