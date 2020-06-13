@@ -1,3 +1,11 @@
-.textfield {
-    color: orange;
+.lm-ui-select-field {
+    .MuiFormLabel-root {
+        color: rgba(0, 0, 0, 0.7);
+    }
+    .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+        border-color: rgba(0, 0, 0, 0.7);
+    }
+    .MuiInputAdornment-positionStart {
+        color: var(--lm-ui-primary);
+    }
 }

@@ -1,36 +1,48 @@
 {
   "name": "lm-uikit",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.1.8",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
   "devDependencies": {
+    "@testing-library/jest-dom": "4.2.4",
+    "@testing-library/react": "9.3.2",
+    "@testing-library/user-event": "7.1.2",
     "@types/jest": "24.9.1",
     "@types/node": "12.12.47",
     "@types/react": "16.9.36",
     "@types/react-dom": "16.9.8",
-    "@testing-library/jest-dom": "4.2.4",
-    "@testing-library/react": "9.3.2",
-    "@testing-library/user-event": "7.1.2",
-    "react-scripts": "3.4.1",
     "node-sass": "4.14.1",
+    "npm-run-all": "4.1.5",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-scripts": "3.4.1",
     "typescript": "3.7.2"
   },
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@material-ui/core": "^4.10.2",
+    "@material-ui/icons": "4.9.1",
+    "@types/react-select": "3.0.13",
+    "react-select": "3.1.0",
+    "react-switch": "5.0.1"
+  },
   "scripts": {
-    "start": "react-scripts start",
+    "start:css": "node-sass ./src/ -o ./src/",
+    "start:css-watch": "node-sass ./src/ -o ./src/ -w",
+    "start:react": "react-scripts start",
+    "start": "npm-run-all --parallel start:*",
     "build:css": "node-sass src/lib/ -o lib/",
     "build:ts": "tsc --noEmit false",
-    "build": "npm run build:ts && npm run build:css",
+    "build": "npm run build:css && npm run build:ts",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "postinstall": "npm run build"
+    "prepublish": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
