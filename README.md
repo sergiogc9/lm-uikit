@@ -1,44 +1,106 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## How to use
 
-## Available Scripts
+### Installation
 
-In the project directory, you can run:
+Install the UI kit using npm:
+```bash
+npm install lm-uikit
+```
 
-### `yarn start`
+### Use the provider
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The provider helps passing some theming and options to the UI kit:
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+```typescript
+import ThemeProvider from "lm-uikit/lib/ThemeProvider";
 
-### `yarn test`
+const App: React.FC = props => {
+    <ThemeProvider palette={{ primary: { main: '#3AD4A7' } }}>
+        // Content here
+    </ThemeProvider>
+};
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The provider has the following props:
 
-### `yarn build`
+#### `palette`
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Send the theme colors used to the UI kit. The palette has the following interface:
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+```ts
+type PaletteColor = {
+  light?: string;
+  main: string;
+  dark?: string;
+  contrastText?: string;
+}
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+type Palette = {
+  primary?: PaletteColor
+  secondary?: PaletteColor
+  error?: PaletteColor
+  warning?: PaletteColor
+  info?: PaletteColor
+  success?: PaletteColor
+}
+```
 
-### `yarn eject`
+Only the main value is mandatory. If light and dark are not set, they are computed automatically from the main color.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+#### `typography`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Needed to let the UI kit to know about some typography changes done in the application. The options are:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```ts
+type Typography = {
+  htmlFontSize: number // Set the base font size in the application when changed using rem
+}
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+The `htmlFontSize` option is needed when the base font size is changed using rem values. [Click here](https://www.sitepoint.com/understanding-and-using-rem-units-in-css/) for further information.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Components
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### TextField
+
+Based on Material ui component outlined text field:
+
+https://material-ui.com/es/components/text-fields/
+
+```typescript
+import TextField from "lm-uikit/lib/TextField";
+
+<TextField
+	label='Name'
+	value={name}
+	onChange={ev => {}}
+/>
+```
+
+#### Switch
+
+Based on [react-switch](https://github.com/markusenglund/react-switch):
+
+```typescript
+import Switch from "lm-uikit/lib/Switch";
+
+<Switch checked={checked} onChange={() => setChecked(c => !c)} />
+```
+
+#### Select
+
+Based on [react-select](https://react-select.com/home):
+
+```typescript
+import Select from "lm-uikit/lib/Switch";
+
+const selectOptions = [
+  { label: "January", value: "1" },
+  { label: "February", value: "2" },
+  { label: "March", value: "3" }
+  // ...
+];
+
+<Select defaultValue={[selectOptions[1], selectOptions[2]]} options={selectOptions} isMulti />
+```
