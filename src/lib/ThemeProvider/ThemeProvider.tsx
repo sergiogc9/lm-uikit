@@ -23,11 +23,9 @@ type Typography = {
 
 type ComponentProps = {
   children: React.ReactNode
-  palette: Palette
+  palette?: Palette
   typography?: Typography
 }
-
-export const ThemeContext = React.createContext<Palette>({});
 
 const defaultPrimaryPalette: PaletteColor = {
   main: '#3AD4A7',
@@ -35,12 +33,14 @@ const defaultPrimaryPalette: PaletteColor = {
   dark: '#00C795'
 };
 
+export const ThemeContext = React.createContext<Palette>({ primary: defaultPrimaryPalette });
+
 // If no primary passed, set LM color by default
 const getDefaultPalette = (palette: Palette): Palette => ({ ...palette, primary: palette.primary || defaultPrimaryPalette });
 
 const ThemeProvider: React.FC<ComponentProps> = props => {
 
-  const [palette, setPalette] = React.useState(getDefaultPalette(props.palette));
+  const [palette, setPalette] = React.useState(getDefaultPalette(props.palette || {}));
   // Theme based on MUI library, probably should be a good idea use a custom theme type
   const [theme, setTheme] = React.useState(createMuiTheme({ palette, typography: props.typography }));
 
@@ -48,7 +48,7 @@ const ThemeProvider: React.FC<ComponentProps> = props => {
     // Material UI theme stuff
     // See options here https://material-ui.com/es/customization/palette/
     // Only main values are mandatory, the other values are auto-calculated
-    const theme = createMuiTheme({ palette: getDefaultPalette(props.palette), typography: props.typography });
+    const theme = createMuiTheme({ palette: getDefaultPalette(props.palette || {}), typography: props.typography });
     setTheme(theme);
 
     // Set css variables

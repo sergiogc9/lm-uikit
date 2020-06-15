@@ -1,4 +1,7 @@
 import React from 'react';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import SearchIcon from '@material-ui/icons/Search';
+
 import TextField from './lib/TextField';
 import Switch from './lib/Switch';
 import Select from './lib/Select';
@@ -28,8 +31,13 @@ function App() {
     // Change error to primary to see green color changing to green. Set error prop in text field to see error changing color
     <ThemeProvider palette={{ error: { main: '#1E90FF' } }}>
       <div className="test-container">
+        <span>TextField:</span>
         <TextField label="awesome" />
+        <span>TextField with search icon:</span>
+        <TextField label="awesome" InputProps={{ startAdornment: (<InputAdornment position="start"><SearchIcon /></InputAdornment>) }}/>
+        <span>Switch:</span>
         <Switch checked={checked} onChange={() => setChecked(c => !c)} />
+        <span>Select:</span>
         <Select defaultValue={[selectOptions[1], selectOptions[5]]} options={selectOptions} isMulti />
       </div>
     </ThemeProvider>
