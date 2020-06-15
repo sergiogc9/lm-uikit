@@ -1,3 +1,9 @@
+This repository is a **proposal** about how all teams can use the same UI components between React applications. 
+
+It is a **not** a final version. The intention is to show it with different components from different repositories. There are some consideration I want you to know:
+- The components / libraries used are not decided. I used Material UI because I think is a good option. I also use other components outside from Material UI components to show they can be use, but that does not mean I would use them in a final version.
+- I decided to use a provider based solution to control the theme and colours as Material UI does. This makes easy to change colors in Material UI components without changing the CSS in the components. This makes the provider **mandatory**, but another approach can be used. Also components can be used without the provider, but some of them will have the default colours and theme. This behaviour can be improved also.
+
 ## How to use
 
 ### Installation
@@ -9,43 +15,21 @@ npm install lm-uikit
 
 ### Use the provider
 
-The provider helps passing some theming and options to the UI kit:
+The provider helps passing some theme colors and options to the UI kit. It is mandatory:
 
 ```typescript
 import ThemeProvider from "lm-uikit/lib/ThemeProvider";
 
 const App: React.FC = props => {
-    <ThemeProvider palette={{ primary: { main: '#3AD4A7' } }}>
+    <ThemeProvider>
         // Content here
     </ThemeProvider>
 };
 ```
 
-The provider has the following props:
-
 #### `palette`
 
-Send the theme colors used to the UI kit. The palette has the following interface:
-
-```ts
-type PaletteColor = {
-  light?: string;
-  main: string;
-  dark?: string;
-  contrastText?: string;
-}
-
-type Palette = {
-  primary?: PaletteColor
-  secondary?: PaletteColor
-  error?: PaletteColor
-  warning?: PaletteColor
-  info?: PaletteColor
-  success?: PaletteColor
-}
-```
-
-Only the main value is mandatory. If light and dark are not set, they are computed automatically from the main color.
+Set the theme colors used to the UI kit. See theme section for further information. 
 
 #### `typography`
 
@@ -104,3 +88,27 @@ const selectOptions = [
 
 <Select defaultValue={[selectOptions[1], selectOptions[2]]} options={selectOptions} isMulti />
 ```
+
+### Theme customization
+
+The colors used in the UI kit can be customized using the theme provider. The `palette` prop has the following interface:
+
+```ts
+type PaletteColor = {
+  light?: string;
+  main: string;
+  dark?: string;
+  contrastText?: string;
+}
+
+type Palette = {
+  primary?: PaletteColor
+  secondary?: PaletteColor
+  error?: PaletteColor
+  warning?: PaletteColor
+  info?: PaletteColor
+  success?: PaletteColor
+}
+```
+
+Only the main value is mandatory. If light and dark are not set, they are computed automatically from the main color.
