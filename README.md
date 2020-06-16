@@ -1,6 +1,6 @@
-This repository is a **proposal** about how all teams can use the same UI components between React applications. 
+This repository is a **proposal** about how all teams can use the same UI components between React applications.
 
-It is a **not** a final version. The intention is to show it with different components from different repositories. There are some consideration I want you to know:
+It is a **not** a final version, its purpose is to be an example **demo**. The intention is to show it with different components from different repositories. There are some consideration I want you to know:
 - The components / libraries used are not decided. I used Material UI because I think is a good option. I also use other components outside from Material UI components to show they can be use, but that does not mean I would use them in a final version.
 - I decided to use a provider based solution to control the theme and colours as Material UI does. This makes easy to change colors in Material UI components without changing the CSS in the components. This makes the provider **mandatory**, but another approach can be used. Also components can be used without the provider, but some of them will have the default colours and theme. This behaviour can be improved also.
 
@@ -29,7 +29,7 @@ const App: React.FC = props => {
 
 #### `palette`
 
-Set the theme colors used to the UI kit. See theme section for further information. 
+Set the theme colors used to the UI kit. See theme section for further information.
 
 #### `typography`
 
@@ -112,3 +112,23 @@ type Palette = {
 ```
 
 Only the main value is mandatory. If light and dark are not set, they are computed automatically from the main color.
+
+## Development
+
+After cloning the repo the only thing to do is to start the development server. It is bootstrapped using `create-react-app`, hence it is as easy as:
+```
+npm start
+```
+
+The file `App.tsx` contains a demo page using some of the components.
+
+### Storybook
+
+Another option to test the components is using the storybook. You can start locally it using:
+
+```
+npm run storybook
+```
+
+Or you can see it here (the link is personal and it may fail):
+http://foxraspby.ddns.net/storybook/

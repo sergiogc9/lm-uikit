@@ -19,7 +19,8 @@
     "jsx": "react",
     "outDir": "lib",
     "declaration": true,
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": "src"
   },
   "include": [
     "src/lib"

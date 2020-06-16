@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactSelect, { components, Props } from 'react-select';
 
-import { ThemeContext } from '../ThemeProvider/ThemeProvider';
+import { ThemeContext } from 'lib/ThemeProvider/ThemeProvider';
 
 import './Select.css';
 

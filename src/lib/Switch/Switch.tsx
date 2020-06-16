@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactSwitch, { ReactSwitchProps } from 'react-switch';
 
-import { ThemeContext } from '../ThemeProvider/ThemeProvider';
+import { ThemeContext } from 'lib/ThemeProvider/ThemeProvider';
 
 import './Switch.css';
 
