@@ -1,6 +1,6 @@
-This repository is a **proposal** about how all teams can use the same UI components between React applications.
+⚠️ This repository is only a **proposal** about how all teams can use the same UI components between React applications when I was working at Launchmetrics. It is **NOT** a final version and it is **NOT** mantained or used by anyone.
 
-It is a **not** a final version, its purpose is to be an example **demo**. The intention is to show it with different components from different repositories. There are some consideration I want you to know:
+Its purpose is to be an example **demo**. The intention is to show it with different components from different repositories. There are some consideration I want you to know:
 - The components / libraries used are not decided. I used Material UI because I think is a good option. I also use other components outside from Material UI components to show they can be use, but that does not mean I would use them in a final version.
 - I decided to use a provider based solution to control the theme and colours as Material UI does. This makes easy to change colors in Material UI components without changing the CSS in the components. This makes the provider **mandatory**, but another approach can be used. Also components can be used without the provider, but some of them will have the default colours and theme. This behaviour can be improved also.
 
